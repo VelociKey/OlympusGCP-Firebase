@@ -1,0 +1,10 @@
+# OlympusGCP-Firebase Workspace DNA (jeBNF-MPH)
+workspace_name = "OlympusGCP-Firebase"
+
+  Item 0 .md "README.md"
+  Item 1 .json "firebase.json"
+  Domain "60000-Information-Storage" {
+    Domain "Emulators" {
+      Item 2 .yaml "podman-compose.yaml"
+    }
+  }
