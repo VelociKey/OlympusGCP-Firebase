@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package firebase.v1;
 
-option go_package = "OlympusGCP-Firebase/40000-Communication-Contracts/430-Protocol-Definitions/000-gen/firebase/v1;firebasev1";
+option go_package = "OlympusGCP-Firebase/gen/v1/firebase;firebasev1";
 
 service FirebaseService {
   rpc CreateUser (CreateUserRequest) returns (CreateUserResponse);

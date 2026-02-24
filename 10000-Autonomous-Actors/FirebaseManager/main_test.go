@@ -4,12 +4,13 @@ import (
 	"context"
 	"testing"
 
-	firebasev1 "OlympusGCP-Firebase/40000-Communication-Contracts/430-Protocol-Definitions/000-gen/firebase/v1"
+	firebasev1 "OlympusGCP-Firebase/gen/v1/firebase"
+	"OlympusGCP-Firebase/10000-Autonomous-Actors/10700-Processing-Engines/10710-Reasoning-Inference/inference"
 	"connectrpc.com/connect"
 )
 
 func TestFirebaseServer(t *testing.T) {
-	server := &FirebaseServer{}
+	server := &inference.FirebaseServer{}
 	ctx := context.Background()
 
 	// Test CreateUser

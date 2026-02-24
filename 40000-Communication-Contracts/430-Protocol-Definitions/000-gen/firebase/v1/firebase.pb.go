@@ -251,7 +251,7 @@ const file_firebase_v1_firebase_proto_rawDesc = "" +
 	"\x0fFirebaseService\x12M\n" +
 	"\n" +
 	"CreateUser\x12\x1e.firebase.v1.CreateUserRequest\x1a\x1f.firebase.v1.CreateUserResponse\x12P\n" +
-	"\vSetDocument\x12\x1f.firebase.v1.SetDocumentRequest\x1a .firebase.v1.SetDocumentResponseBkZiOlympusGCP-Firebase/40000-Communication-Contracts/430-Protocol-Definitions/000-gen/firebase/v1;firebasev1b\x06proto3"
+	"\vSetDocument\x12\x1f.firebase.v1.SetDocumentRequest\x1a .firebase.v1.SetDocumentResponseBkZiOlympusGCP-Firebase/gen/v1/firebase;firebasev1b\x06proto3"
 
 var (
 	file_firebase_v1_firebase_proto_rawDescOnce sync.Once

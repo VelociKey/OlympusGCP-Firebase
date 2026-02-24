@@ -1,36 +1,29 @@
 package main
 
 import (
-	"context"
+	"fmt"
 	"log/slog"
 	"net/http"
 	"time"
 
-	firebasev1 "OlympusGCP-Firebase/40000-Communication-Contracts/430-Protocol-Definitions/000-gen/firebase/v1"
-	"OlympusGCP-Firebase/40000-Communication-Contracts/430-Protocol-Definitions/000-gen/firebase/v1/firebasev1connect"
+	"OlympusGCP-Firebase/gen/v1/firebase/firebasev1connect"
+	"OlympusGCP-Firebase/10000-Autonomous-Actors/10700-Processing-Engines/10710-Reasoning-Inference/inference"
 
-	"connectrpc.com/connect"
 	"golang.org/x/net/http2"
 	"golang.org/x/net/http2/h2c"
 )
 
-type FirebaseServer struct{}
-
-func (s *FirebaseServer) CreateUser(ctx context.Context, req *connect.Request[firebasev1.CreateUserRequest]) (*connect.Response[firebasev1.CreateUserResponse], error) {
-	slog.Info("CreateUser", "email", req.Msg.Email)
-	return connect.NewResponse(&firebasev1.CreateUserResponse{Uid: "user-abc"}), nil
-}
-
-func (s *FirebaseServer) SetDocument(ctx context.Context, req *connect.Request[firebasev1.SetDocumentRequest]) (*connect.Response[firebasev1.SetDocumentResponse], error) {
-	slog.Info("SetDocument", "collection", req.Msg.Collection, "id", req.Msg.DocId)
-	return connect.NewResponse(&firebasev1.SetDocumentResponse{Uid: req.Msg.DocId}), nil
-}
-
 func main() {
-	server := &FirebaseServer{}
+	server := &inference.FirebaseServer{}
 	mux := http.NewServeMux()
 	path, handler := firebasev1connect.NewFirebaseServiceHandler(server)
 	mux.Handle(path, handler)
+
+	// Health Check / Pulse
+	mux.HandleFunc("/pulse", func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Set("Content-Type", "application/json")
+		fmt.Fprintf(w, `{"status":"HEALTHY", "workspace":"OlympusGCP-Firebase", "time":"%s"}`, time.Now().Format(time.RFC3339))
+	})
 
 	port := "8099" // From genesis.json
 	slog.Info("FirebaseManager starting", "port", port)
