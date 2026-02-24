@@ -1,0 +1,38 @@
+package main
+
+import (
+	"context"
+	"testing"
+
+	firebasev1 "OlympusGCP-Firebase/40000-Communication-Contracts/430-Protocol-Definitions/000-gen/firebase/v1"
+	"connectrpc.com/connect"
+)
+
+func TestFirebaseServer(t *testing.T) {
+	server := &FirebaseServer{}
+	ctx := context.Background()
+
+	// Test CreateUser
+	userRes, err := server.CreateUser(ctx, connect.NewRequest(&firebasev1.CreateUserRequest{
+		Email: "test@example.com",
+	}))
+	if err != nil {
+		t.Fatalf("CreateUser failed: %v", err)
+	}
+	if userRes.Msg.Uid == "" {
+		t.Error("Expected UID, got empty string")
+	}
+
+	// Test SetDocument
+	docRes, err := server.SetDocument(ctx, connect.NewRequest(&firebasev1.SetDocumentRequest{
+		Collection: "data",
+		DocId:      "123",
+		DataJson:   `{"foo": "bar"}`,
+	}))
+	if err != nil {
+		t.Fatalf("SetDocument failed: %v", err)
+	}
+	if docRes.Msg.Uid != "123" {
+		t.Errorf("Expected DocID '123', got '%s'", docRes.Msg.Uid)
+	}
+}
