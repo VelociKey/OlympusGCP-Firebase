@@ -2,7 +2,7 @@ package main
 
 import (
 	"context"
-	"dagger/olympusgcp-firebase/internal/dagger"
+	"olympus.fleet/00SDLC/OlympusForge/70000-Environmental-Harness/dagger/olympusgcp-firebase/internal/dagger"
 )
 
 type OlympusGCPFirebase struct{}
