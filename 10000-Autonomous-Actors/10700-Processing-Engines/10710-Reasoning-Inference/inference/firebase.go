@@ -4,7 +4,7 @@ import (
 	"context"
 	"log/slog"
 
-	firebasev1 "olympus.fleet/00SDLC/OlympusGCP-Firebase/gen/v1/firebase"
+	firebasev1 "olympus.fleet/00SDLC/OlympusGCP-Firebase/40000-Communication-Contracts/40400-Protocol-Synthetics/connect-rpc/gen/v1/firebase"
 	"connectrpc.com/connect"
 )
 

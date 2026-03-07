@@ -4,7 +4,7 @@ import (
 	"context"
 	"testing"
 
-	firebasev1 "olympus.fleet/00SDLC/OlympusGCP-Firebase/gen/v1/firebase"
+	firebasev1 "olympus.fleet/00SDLC/OlympusGCP-Firebase/40000-Communication-Contracts/40400-Protocol-Synthetics/connect-rpc/gen/v1/firebase"
 	"olympus.fleet/00SDLC/OlympusGCP-Firebase/10000-Autonomous-Actors/10700-Processing-Engines/10710-Reasoning-Inference/inference"
 	"connectrpc.com/connect"
 )

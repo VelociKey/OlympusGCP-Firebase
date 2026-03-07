@@ -5,7 +5,7 @@
 package firebasev1connect
 
 import (
-	firebase "olympus.fleet/00SDLC/OlympusGCP-Firebase/gen/v1/firebase"
+	firebase "olympus.fleet/00SDLC/OlympusGCP-Firebase/40000-Communication-Contracts/40400-Protocol-Synthetics/connect-rpc/gen/v1/firebase"
 	connect "connectrpc.com/connect"
 	context "context"
 	errors "errors"
